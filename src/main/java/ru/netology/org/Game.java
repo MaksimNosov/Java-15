@@ -1,24 +1,26 @@
 package ru.netology.org;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
-    protected ArrayList<Player> players = new ArrayList<>();
+
+    protected HashMap<String, Integer> players = new HashMap<>();
 
     public void register(Player player) {
-        players.add(player);
+        players.put(player.name, player.strength);
     }
 
     public int round(String playerName1, String playerName2) {
-        Player player1 = null;
-        Player player2 = null;
+        String player1 = null;
+        String player2 = null;
 
-        for (Player player : players) {
-            if (player.getName().equals(playerName1)) {
-                player1 = player;
+        for (String s : players.keySet()) {
+
+            if (players.containsKey(playerName1)) {
+                player1 = playerName1;
             }
-            if (player.getName().equals(playerName2)) {
-                player2 = player;
+            if (players.containsKey(playerName2)) {
+                player2 = playerName2;
             }
         }
 
@@ -29,13 +31,13 @@ public class Game {
             throw new NotRegisteredException("Player with name: " + playerName2 + " ne zaregistrirovan");
         }
 
-        if (player1.getStrength() == player2.getStrength()) {
-            return 0;
-        }
-        if (player1.getStrength() > player2.getStrength()) {
+        if (players.get(player1) > players.get(player2)) {
             return 1;
-        } else {
+        }
+        if (players.get(player1) < players.get(player2)) {
             return 2;
+        } else {
+            return 0;
         }
     }
 }
