@@ -6,10 +6,10 @@ import ru.netology.org.NotRegisteredException;
 import ru.netology.org.Player;
 
 public class GameTest {
-    Player player1 = new Player(1, "Igrok 1", 100);
-    Player player2 = new Player(22, "Igrok 2", 202);
-    Player player3 = new Player(34, "Igrok 3", 330);
-    Player player4 = new Player(47, "Igrok 4", 202);
+    Player player1 = new Player("Igrok 1", 100);
+    Player player2 = new Player("Igrok 2", 202);
+    Player player3 = new Player("Igrok 3", 330);
+    Player player4 = new Player("Igrok 4", 202);
 
     Game game = new Game();
 
